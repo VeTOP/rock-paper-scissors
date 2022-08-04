@@ -22,7 +22,8 @@ function game(){
     let playerPoints = 0;
     let robotPoints = 0;
     for (let i = 0; i < 5; i++) {
-        let winner = playRound("scissors", getComputerChoice());
+        let playerChoice = window.prompt();
+        let winner = playRound(playerChoice, getComputerChoice());
         if (winner == "player") {
             playerPoints ++;
         } else if (winner == "robot") {
