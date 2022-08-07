@@ -2,6 +2,7 @@ let nRounds = 0;
 let playerPoints = 0;
 let robotPoints = 0;
 
+
 function getComputerChoice() {
     let items = ["rock", "paper", "scissors"]
     return items[Math.floor((Math.random() * 3))]
@@ -30,21 +31,21 @@ function game(playerChoice) {
         robotPoints++;
     } else { nRounds-- }
 
-    console.log(playerPoints + " these are the player points for now")
-    console.log(robotPoints + " these are the robot points for now")
-    console.log(nRounds + " this is the round number...")
+    robotCaption.innerText = robotPoints;
+    humanCaption.innerText = playerPoints;
 
     if (nRounds == 5) {
+        if (playerPoints > robotPoints) {
+            //return "PLAYER WINS"
+            displayWinnerTag.innerText = "Player wins";
+        } else {
+            //return "ROBOT WINS"
+            displayWinnerTag.innerText = "Robot wins";
+        }
+
         playerPoints = 0;
         robotPoints = 0;
         nRounds = 0;
-        if (playerPoints > robotPoints) {
-            //return "PLAYER WINS"
-            console.log("PLAYER WINS")
-        } else {
-            //return "ROBOT WINS"
-            console.log("ROBOT WINS")
-        }
     }
 
 
@@ -53,6 +54,10 @@ function game(playerChoice) {
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
+
+displayWinnerTag = document.querySelector('.displayWinner');
+humanCaption = document.querySelector('.humanCaption');
+robotCaption = document.querySelector('.robotCaption');
 
 rockButton.addEventListener("click", function () { game("rock"); });
 paperButton.addEventListener("click", function () { game("paper"); });
